@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "minecraft:large_fern"
+  },
+  "result": "decorative_winter:dry_large_fern",
+  "experience": 0.1,
+  "cookingtime": 100
+}

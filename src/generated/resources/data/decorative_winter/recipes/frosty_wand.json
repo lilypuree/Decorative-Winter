@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  o",
+    " # ",
+    "#  "
+  ],
+  "key": {
+    "o": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "#": {
+      "item": "minecraft:packed_ice"
+    }
+  },
+  "result": {
+    "item": "decorative_winter:frosty_wand"
+  }
+}

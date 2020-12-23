@@ -1,0 +1,7 @@
+{
+  "parent": "decorative_blocks:custom/lattice_bottom",
+  "textures": {
+    "particle": "decorative_winter:block/wreath",
+    "texture": "decorative_winter:block/wreath"
+  }
+}

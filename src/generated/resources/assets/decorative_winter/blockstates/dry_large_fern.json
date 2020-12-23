@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=upper": {
+      "model": "decorative_winter:block/dry_large_fern_top"
+    },
+    "half=lower": {
+      "model": "decorative_winter:block/dry_large_fern_bottom"
+    }
+  }
+}

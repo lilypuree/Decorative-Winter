@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "decorative_winter:festive_chain"
+    ]
+  },
+  "criteria": {
+    "has_chain": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "decorative_blocks:chain"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "decorative_winter:festive_chain"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_chain",
+      "has_the_recipe"
+    ]
+  ]
+}

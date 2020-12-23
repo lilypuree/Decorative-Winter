@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "decorative_winter:block/snowy_dry_grass"
+  }
+}

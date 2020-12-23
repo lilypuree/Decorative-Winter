@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "minecraft:grass_block"
+  },
+  "result": "decorative_winter:dry_grass_block",
+  "experience": 0.1,
+  "cookingtime": 100
+}

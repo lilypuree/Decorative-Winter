@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=upper": {
+      "model": "decorative_winter:block/dry_tall_grass_top"
+    },
+    "half=lower": {
+      "model": "decorative_winter:block/dry_tall_grass_bottom"
+    }
+  }
+}

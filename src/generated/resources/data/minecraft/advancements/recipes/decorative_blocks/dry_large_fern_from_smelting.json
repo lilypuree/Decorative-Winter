@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:dry_large_fern_from_smelting"
+    ]
+  },
+  "criteria": {
+    "has_large_fern": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:large_fern"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:dry_large_fern_from_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_large_fern",
+      "has_the_recipe"
+    ]
+  ]
+}

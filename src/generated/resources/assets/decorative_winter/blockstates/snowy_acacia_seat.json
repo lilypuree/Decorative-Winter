@@ -1,0 +1,55 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "attached": "true"
+      },
+      "apply": {
+        "model": "decorative_winter:block/snowy_acacia_seat_post"
+      }
+    },
+    {
+      "when": {
+        "facing": "north"
+      },
+      "apply": {
+        "model": "decorative_winter:block/snowy_acacia_seat_top"
+      }
+    },
+    {
+      "when": {
+        "facing": "south"
+      },
+      "apply": {
+        "model": "decorative_winter:block/snowy_acacia_seat_top",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "east"
+      },
+      "apply": {
+        "model": "decorative_winter:block/snowy_acacia_seat_top",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "west"
+      },
+      "apply": {
+        "model": "decorative_winter:block/snowy_acacia_seat_top",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "snowy": "true"
+      },
+      "apply": {
+        "model": "decorative_winter:block/custom/custom_snow"
+      }
+    }
+  ]
+}

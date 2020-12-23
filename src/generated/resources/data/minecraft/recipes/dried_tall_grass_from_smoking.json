@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "minecraft:tall_grass"
+  },
+  "result": "decorative_winter:dry_tall_grass",
+  "experience": 0.1,
+  "cookingtime": 100
+}
