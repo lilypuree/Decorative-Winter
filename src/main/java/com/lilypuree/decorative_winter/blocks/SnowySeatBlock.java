@@ -1,56 +1,31 @@
 package com.lilypuree.decorative_winter.blocks;
 
-import com.google.common.collect.ImmutableMap;
 import com.lilypuree.decorative_blocks.blocks.SeatBlock;
 import com.lilypuree.decorative_blocks.datagen.types.IWoodType;
-import com.lilypuree.decorative_blocks.entity.DummyEntityForSitting;
-import com.lilypuree.decorative_winter.setup.ModSetup;
 import net.minecraft.block.*;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.boss.WitherEntity;
-import net.minecraft.entity.boss.dragon.EnderDragonEntity;
-import net.minecraft.entity.merchant.villager.VillagerEntity;
-import net.minecraft.entity.monster.*;
-import net.minecraft.entity.monster.piglin.PiglinBruteEntity;
-import net.minecraft.entity.monster.piglin.PiglinEntity;
-import net.minecraft.entity.passive.*;
-import net.minecraft.entity.passive.fish.AbstractFishEntity;
-import net.minecraft.entity.passive.horse.*;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.*;
 import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.Property;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 public class SnowySeatBlock extends SeatBlock implements ISnowLoggable {
+    private static final VoxelShape SNOW = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
+    private static final VoxelShape POST_SHAPE_a = Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 4.0D, 10.0D);
+    private static final VoxelShape JOIST_SHAPE_NS_a = Block.makeCuboidShape(0.0D, 4.0D, 4.0D, 16.0D, 7.0D, 12.0D);
+    private static final VoxelShape JOIST_SHAPE_EW_a = Block.makeCuboidShape(4.0D, 4.0D, 0.0D, 12.0D, 7.0D, 16.0D);
+    private static final VoxelShape SEAT_SHAPE_NS_a = VoxelShapes.or(POST_SHAPE_a, JOIST_SHAPE_NS_a);
+    private static final VoxelShape SEAT_SHAPE_EW_a = VoxelShapes.or(POST_SHAPE_a, JOIST_SHAPE_EW_a);
+    protected static final VoxelShape SNOWY_SHAPE_NS = VoxelShapes.or(SNOW, SEAT_SHAPE_NS_a);
+    protected static final VoxelShape SNOWY_SHAPE_EW = VoxelShapes.or(SNOW, SEAT_SHAPE_EW_a);
 
     public static final BooleanProperty SNOWY = BlockStateProperties.SNOWY;
+
 
     public SnowySeatBlock(Properties properties, IWoodType woodType) {
         super(properties, woodType);
@@ -59,6 +34,25 @@ public class SnowySeatBlock extends SeatBlock implements ISnowLoggable {
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         BlockState state = super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
         return updateSnowState(state, facing, facingState, worldIn, currentPos, facingPos);
+    }
+
+
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        boolean attached = state.get(ATTACHED);
+        if (state.get(SNOWY)) {
+            switch (state.get(HORIZONTAL_FACING)) {
+                case NORTH:
+                case SOUTH:
+                    return attached ? SNOWY_SHAPE_NS : JOIST_SHAPE_NS_a;
+                case EAST:
+                case WEST:
+                    return attached ? SNOWY_SHAPE_EW : JOIST_SHAPE_EW_a;
+                default:
+                    return SEAT_SHAPE_NS_a;
+            }
+        } else {
+            return super.getShape(state, worldIn, pos, context);
+        }
     }
 
 

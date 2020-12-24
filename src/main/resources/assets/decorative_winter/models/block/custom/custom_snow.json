@@ -1,8 +1,3 @@
 {
-  "parent": "block/block",
-  "loader": "decorative_winter:snowyloader",
-  "textures": {
-    "particles" : "minecraft:block/snow",
-    "snow" : "minecraft:block/snow"
-  }
+  "parent": "block/snow_height2"
 }

@@ -44,6 +44,8 @@ public class Registration {
 
     public static final ImmutableMap<String, RegistryObject<Block>> DECORATIVE_BLOCKS;
     public static final ImmutableMap<String, RegistryObject<Item>> DECORATIVE_ITEMBLOCKS;
+    public static final AbstractBlock.Properties chainProperties = Block.Properties.create(Material.IRON, MaterialColor.RED).hardnessAndResistance(4.3F).sound(SoundType.METAL).notSolid();
+
     public static final Item.Properties dummyProperty = new Item.Properties();
     public static final Item.Properties modItemProperties = (new Item.Properties()).group(ModSetup.ITEM_GROUP);
     public static WoodDecorativeBlockTypes[] supportedTypes = new WoodDecorativeBlockTypes[]{WoodDecorativeBlockTypes.PALISADE, WoodDecorativeBlockTypes.SEAT};
@@ -67,7 +69,7 @@ public class Registration {
 
     static {
         FESTIVE_CHAIN = registerBlockItem("festive_chain",
-                () -> new ChainBlock(Block.Properties.from(com.lilypuree.decorative_blocks.setup.Registration.CHAIN.get())));
+                () -> new ChainBlock(chainProperties));
         DRY_GRASS_BLOCK = registerBlockItem("dry_grass_block",
                 () -> new SnowyGrassBlock(AbstractBlock.Properties.from(Blocks.GRASS_BLOCK)));
         DRY_GRASS = registerBlockItem("dry_grass",

@@ -8,6 +8,8 @@ import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Arrays;
+
 public class Languages extends LanguageProvider {
 
     public Languages(DataGenerator gen, String locale) {
@@ -31,11 +33,11 @@ public class Languages extends LanguageProvider {
 
 //            add(Registration.getSnowyPalisadeBlock(wood).asItem(), "Snowy " + cap(wood.toString()) + " Palisade");
 //            add(Registration.getSnowySeatBlock(wood).asItem(), "Snowy " + cap(wood.toString()) + " Seat");
-//            add(Registration.getBranchBlock(wood).asItem(), cap(wood.toString()) + " Thin Branch");
+            add(Registration.getBranchBlock(wood).asItem(), cap(wood.toString()) + " Thin Branch");
         }
     }
 
     private String cap(String string) {
-        return StringUtils.capitalize(string);
+        return Arrays.stream(StringUtils.split(string, "_")).map(StringUtils::capitalize).reduce((str1, str2) -> str1 + " " + str2).get();
     }
 }

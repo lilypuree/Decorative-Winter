@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.model.ItemOverrideList;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.renderer.vertex.VertexFormatElement;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
@@ -20,6 +21,8 @@ import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 import net.minecraftforge.client.model.pipeline.BakedQuadBuilder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -187,13 +190,19 @@ public class SnowyBakedModel implements IDynamicBakedModel {
             putVertex(builder, normal, v3.getX(), v3.getY(), v3.getZ(), u, v_, sprite, rgb, rgb, rgb);
             putVertex(builder, normal, v4.getX(), v4.getY(), v4.getZ(), u, v, sprite, rgb, rgb, rgb);
         }
+
         return builder.build();
     }
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     public static void putVertex(BakedQuadBuilder builder, Vector3f normal,
                                  double x, double y, double z, float u, float v, TextureAtlasSprite sprite, float r, float g, float b) {
 
         ImmutableList<VertexFormatElement> elements = builder.getVertexFormat().getElements().asList();
+        if (builder.getVertexFormat() != DefaultVertexFormats.BLOCK) {
+            LOGGER.error("Non Block Baked Quad building!");
+        }
         for (int j = 0; j < elements.size(); j++) {
             VertexFormatElement e = elements.get(j);
             switch (e.getUsage()) {
@@ -214,7 +223,7 @@ public class SnowyBakedModel implements IDynamicBakedModel {
                             builder.put(j, (short) 0, (short) 0);
                             break;
                         default:
-                            builder.put(j);
+                            builder.put(j, (short) 0, (short) 0);
                             break;
                     }
                     break;
@@ -222,6 +231,7 @@ public class SnowyBakedModel implements IDynamicBakedModel {
                     builder.put(j, (float) normal.getX(), (float) normal.getY(), (float) normal.getZ());
                     break;
                 default:
+                    if (j >= 6) break;
                     builder.put(j);
                     break;
             }
