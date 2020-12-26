@@ -1,9 +1,8 @@
 package com.lilypuree.decorative_winter.setup;
 
 import com.google.common.collect.ImmutableMap;
-import com.lilypuree.decorative_blocks.DecorativeBlocks;
-import com.lilypuree.decorative_blocks.blocks.*;
 import com.lilypuree.decorative_blocks.blocks.ChainBlock;
+import com.lilypuree.decorative_blocks.blocks.*;
 import com.lilypuree.decorative_blocks.datagen.types.IWoodType;
 import com.lilypuree.decorative_blocks.datagen.types.VanillaWoodTypes;
 import com.lilypuree.decorative_blocks.datagen.types.WoodDecorativeBlockTypes;
@@ -29,6 +28,7 @@ import java.util.function.Supplier;
 import static com.lilypuree.decorative_winter.DecorativeWinter.MODID;
 
 public class Registration {
+
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);

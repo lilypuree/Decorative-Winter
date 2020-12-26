@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.IResource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
 import javax.imageio.ImageIO;
@@ -126,12 +125,9 @@ public class WinterTextureStitcher {
         return newImage;
     }
 
-    private Image transformGrayToTransparency(BufferedImage image)
-    {
-        ImageFilter filter = new RGBImageFilter()
-        {
-            public final int filterRGB(int x, int y, int rgb)
-            {
+    private Image transformGrayToTransparency(BufferedImage image) {
+        ImageFilter filter = new RGBImageFilter() {
+            public final int filterRGB(int x, int y, int rgb) {
                 return (rgb << 8) & 0xFF000000;
             }
         };
@@ -155,6 +151,7 @@ public class WinterTextureStitcher {
     }
 
     public static class TexturePair {
+
         private ResourceLocation loc;
         private BufferedImage image;
 

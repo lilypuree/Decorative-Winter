@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CompatModWoodTypes {
+
     private static final Set<IWoodType> modWoodTypes;
     private static Set<IWoodType> woodTypes = new HashSet<>();
 
@@ -16,17 +17,17 @@ public class CompatModWoodTypes {
         modWoodTypes = findWoodTypes();
     }
 
-    private static Set<IWoodType> findWoodTypes(){
+    private static Set<IWoodType> findWoodTypes() {
         return woodTypes;
     }
 
-    private static void addModWoodTypes(String modid, IWoodType[] modWood){
-        if(ModList.get().isLoaded(modid)){
+    private static void addModWoodTypes(String modid, IWoodType[] modWood) {
+        if (ModList.get().isLoaded(modid)) {
             woodTypes.addAll(Arrays.stream(modWood).collect(Collectors.toSet()));
         }
     }
 
-    public static Set<IWoodType> allWoodTypes(){
+    public static Set<IWoodType> allWoodTypes() {
         return modWoodTypes;
     }
 }

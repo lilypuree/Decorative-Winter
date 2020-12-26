@@ -4,9 +4,7 @@ import com.lilypuree.decorative_blocks.datagen.types.IWoodType;
 import com.lilypuree.decorative_blocks.datagen.types.VanillaWoodTypes;
 import com.lilypuree.decorative_winter.setup.Registration;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.CookingRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -17,6 +15,7 @@ import net.minecraftforge.common.Tags;
 import java.util.function.Consumer;
 
 public class WinterRecipes extends RecipeProvider {
+
     public WinterRecipes(DataGenerator generatorIn) {
         super(generatorIn);
     }
@@ -31,6 +30,7 @@ public class WinterRecipes extends RecipeProvider {
 //            makeWoodenBlockRecipes(wood);
 
         }
+        wreathRecipe();
         festiveChainRecipe();
         frostyWandRecipe();
         driedFoliageRecipe(Items.GRASS, Registration.DRY_GRASS.get());
@@ -48,7 +48,7 @@ public class WinterRecipes extends RecipeProvider {
         cookingRecipesForMethod(consumer, "campfire_cooking", IRecipeSerializer.CAMPFIRE_COOKING, 600);
     }
 
-    private void wreathRecipe(){
+    private void wreathRecipe() {
         ShapedRecipeBuilder.shapedRecipe(Registration.WREATH.get(), 2)
                 .patternLine(" x ")
                 .patternLine("x x")
@@ -68,7 +68,7 @@ public class WinterRecipes extends RecipeProvider {
                 .build(consumer);
     }
 
-    private void frostyWandRecipe(){
+    private void frostyWandRecipe() {
         ShapedRecipeBuilder.shapedRecipe(Registration.FROSTY_WAND.get(), 1)
                 .patternLine("  o")
                 .patternLine(" # ")
