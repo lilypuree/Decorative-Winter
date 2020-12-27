@@ -25,7 +25,7 @@ public class ChunkSavedBlockPosStorage implements Capability.IStorage<ChunkSaved
     public void readNBT(Capability<ChunkSavedBlockPos> capability, ChunkSavedBlockPos instance, Direction side, INBT nbt) {
         CompoundNBT tag = (CompoundNBT) nbt;
         Set<BlockPos> poses = new HashSet<>();
-        for(long pos:tag.getLongArray("saved_poses")){
+        for (long pos : tag.getLongArray("saved_poses")) {
             poses.add(BlockPos.fromLong(pos));
         }
         instance.setSavedBlockPoses(poses);

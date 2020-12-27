@@ -1,14 +1,16 @@
 package net.minecraft.client.renderer.vertex;
 
 import com.mojang.blaze3d.platform.GlStateManager;
-import java.util.function.IntConsumer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.function.IntConsumer;
+
 @OnlyIn(Dist.CLIENT)
 public class VertexFormatElement {
+
     private static final Logger LOGGER = LogManager.getLogger();
     private final VertexFormatElement.Type type;
     private final VertexFormatElement.Usage usage;
@@ -58,7 +60,7 @@ public class VertexFormatElement {
         if (this == p_equals_1_) {
             return true;
         } else if (p_equals_1_ != null && this.getClass() == p_equals_1_.getClass()) {
-            VertexFormatElement vertexformatelement = (VertexFormatElement)p_equals_1_;
+            VertexFormatElement vertexformatelement = (VertexFormatElement) p_equals_1_;
             if (this.elementCount != vertexformatelement.elementCount) {
                 return false;
             } else if (this.index != vertexformatelement.index) {
@@ -190,6 +192,7 @@ public class VertexFormatElement {
 
         @OnlyIn(Dist.CLIENT)
         interface ISetupState {
+
             void setupBufferState(int p_setupBufferState_1_, int p_setupBufferState_2_, int p_setupBufferState_3_, long p_setupBufferState_4_, int p_setupBufferState_6_);
         }
     }

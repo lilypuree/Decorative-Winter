@@ -21,7 +21,7 @@ public class WinterItems extends Items {
 
     @Override
     protected void registerModels() {
-        for (IWoodType wood : VanillaWoodTypes.values()){
+        for (IWoodType wood : VanillaWoodTypes.values()) {
 //            getBuilder(wood+"_beam").parent(new ModelFile.UncheckedModelFile(modLoc("block/"+wood+"_beam_y")));
 //            getBuilder(wood+"_palisade").parent(new ModelFile.UncheckedModelFile(modLoc("block/"+wood+"_palisade_inventory")));
 //            getBuilder(wood+"_seat").parent(new ModelFile.UncheckedModelFile(modLoc("block/"+wood+"_seat_inventory")));

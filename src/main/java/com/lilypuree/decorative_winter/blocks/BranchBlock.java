@@ -8,7 +8,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 
 public class BranchBlock extends Block {
+
     private IWoodType woodType;
+
     public BranchBlock(Properties properties, IWoodType woodType) {
         super(properties);
         this.woodType = woodType;
@@ -28,7 +30,6 @@ public class BranchBlock extends Block {
     public boolean isTransparent(BlockState state) {
         return true;
     }
-
 
 
     public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {

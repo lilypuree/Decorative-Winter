@@ -32,6 +32,7 @@ import java.util.Random;
 import static net.minecraft.state.properties.BlockStateProperties.SNOWY;
 
 public class FrostyWandItem extends Item {
+
     public static Map<Block, Block> dryableBlocks = new HashMap<>();
 
     public FrostyWandItem(Properties properties) {
