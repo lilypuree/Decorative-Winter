@@ -60,5 +60,5 @@ Winter themed decoration blocks, along with winter/Christmas variants of Decorat
     modId="decorative_blocks"
     mandatory=true
     versionRange="[1.7.0,)"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"

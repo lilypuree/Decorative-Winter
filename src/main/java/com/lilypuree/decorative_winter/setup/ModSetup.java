@@ -44,7 +44,7 @@ import static net.minecraft.state.properties.BlockStateProperties.SNOWY;
 public class ModSetup {
     public static void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            Method setFireInfo = ObfuscationReflectionHelper.findMethod(FireBlock.class, "setFireInfo", Block.class, int.class, int.class);
+            Method setFireInfo = ObfuscationReflectionHelper.findMethod(FireBlock.class, "func_180686_a", Block.class, int.class, int.class);
             int i = 1;
             try {
                 setFireInfo.invoke(Blocks.FIRE, Registration.DRY_GRASS.get(), 60, 100);

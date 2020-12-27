@@ -33,6 +33,7 @@ public class WinterRecipes extends RecipeProvider {
         }
         festiveChainRecipe();
         frostyWandRecipe();
+        wreathRecipe();
         driedFoliageRecipe(Items.GRASS, Registration.DRY_GRASS.get());
         driedFoliageRecipe(Items.TALL_GRASS, Registration.DRY_TALL_GRASS.get());
         driedFoliageRecipe(Items.FERN, Registration.DRY_FERN.get());

@@ -56,7 +56,7 @@ public class RandomTranslatedModel implements IDynamicBakedModel {
 
     @Override
     public boolean isAmbientOcclusion() {
-        return baseModel.isAmbientOcclusion();
+        return true;
     }
 
     @Override
