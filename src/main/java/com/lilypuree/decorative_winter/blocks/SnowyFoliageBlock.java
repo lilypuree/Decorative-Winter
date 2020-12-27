@@ -1,7 +1,10 @@
 package com.lilypuree.decorative_winter.blocks;
 
-import com.lilypuree.decorative_winter.setup.ModSetup;
-import net.minecraft.block.*;
+import com.lilypuree.decorative_winter.EventListener;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.TallGrassBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,7 +18,6 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -50,7 +52,7 @@ public class SnowyFoliageBlock extends TallGrassBlock {
     @Override
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         Entity entity = context.getEntity();
-        if(entity != null && entity.getType() == EntityType.SNOWBALL){
+        if (entity != null && entity.getType() == EntityType.SNOWBALL) {
             return VoxelShapes.fullCube();
         }
         if (state.get(LAYERS) <= 1) return VoxelShapes.empty();
@@ -78,7 +80,7 @@ public class SnowyFoliageBlock extends TallGrassBlock {
     @Override
     public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (!newState.isAir() && !(newState.getBlock() == this)) {
-            ModSetup.spawnSnowBall(worldIn, pos, state.get(LAYERS));
+            EventListener.spawnSnowBall(worldIn, pos, state.get(LAYERS));
         }
         super.onReplaced(state, worldIn, pos, newState, isMoving);
     }
@@ -93,7 +95,7 @@ public class SnowyFoliageBlock extends TallGrassBlock {
 
     @Override
     public void onProjectileCollision(World worldIn, BlockState state, BlockRayTraceResult hit, ProjectileEntity projectile) {
-        if (projectile.getType() == EntityType.SNOWBALL && !state.get(SNOWY)){
+        if (projectile.getType() == EntityType.SNOWBALL && !state.get(SNOWY)) {
             worldIn.setBlockState(hit.getPos(), state.with(SNOWY, true));
         }
         super.onProjectileCollision(worldIn, state, hit, projectile);

@@ -1,15 +1,14 @@
-package com.lilypuree.decorative_winter.setup;
+package com.lilypuree.decorative_winter;
 
 import com.lilypuree.decorative_blocks.blocks.PalisadeBlock;
 import com.lilypuree.decorative_blocks.blocks.SeatBlock;
-import com.lilypuree.decorative_winter.DecorativeWinter;
 import com.lilypuree.decorative_winter.blocks.ISnowLoggable;
 import com.lilypuree.decorative_winter.blocks.ModBlockProperties;
 import com.lilypuree.decorative_winter.blocks.SnowyFoliageBlock;
+import com.lilypuree.decorative_winter.setup.Registration;
+import com.lilypuree.decorative_winter.setup.WinterUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FireBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.item.ItemEntity;
@@ -28,33 +27,11 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 import static net.minecraft.state.properties.BlockStateProperties.SNOWY;
 
-
 @Mod.EventBusSubscriber(modid = DecorativeWinter.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class ModSetup {
-    public static void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            Method setFireInfo = ObfuscationReflectionHelper.findMethod(FireBlock.class, "func_180686_a", Block.class, int.class, int.class);
-            int i = 1;
-            try {
-                setFireInfo.invoke(Blocks.FIRE, Registration.DRY_GRASS.get(), 60, 100);
-                setFireInfo.invoke(Blocks.FIRE, Registration.DRY_FERN.get(), 60, 100);
-                setFireInfo.invoke(Blocks.FIRE, Registration.DRY_LARGE_FERN.get(), 60, 100);
-                setFireInfo.invoke(Blocks.FIRE, Registration.DRY_TALL_GRASS.get(), 60, 100);
-                setFireInfo.invoke(Blocks.FIRE, Registration.DRY_GRASS_BLOCK.get(), 60, 100);
-            } catch (IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        });
-    }
-
+public class EventListener {
 
     @SubscribeEvent
     public static void onBlockActivated(PlayerInteractEvent.RightClickBlock event) {
@@ -90,7 +67,7 @@ public class ModSetup {
                 event.setUseBlock(Event.Result.DENY);
                 event.setUseItem(Event.Result.DENY);
             } else if (block instanceof SeatBlock) {
-                if (canInsertSnow){
+                if (canInsertSnow) {
                     consumeItemAndReplaceBlock(event, WinterUtils.getSnowySeatFrom(state).with(SNOWY, true));
                     playSnowSound(world, player, pos);
                     event.setUseBlock(Event.Result.DENY);
@@ -183,6 +160,4 @@ public class ModSetup {
             world.addEntity(itemEntity);
         }
     }
-
-
 }
