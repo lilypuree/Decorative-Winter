@@ -1,0 +1,6 @@
+{
+  "parent": "decorative_winter:block/custom/thin_branch",
+  "textures": {
+    "texture": "decorative_winter:block/acacia_thin_branch"
+  }
+}

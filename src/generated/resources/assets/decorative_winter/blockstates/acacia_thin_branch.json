@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "decorative_winter:block/acacia_thin_branch"
+      },
+      {
+        "model": "decorative_winter:block/acacia_thin_branch",
+        "y": 180
+      },
+      {
+        "model": "decorative_winter:block/acacia_thin_branch",
+        "x": 180
+      }
+    ]
+  }
+}
