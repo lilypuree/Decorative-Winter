@@ -98,8 +98,8 @@ public class EventListener {
     }
 
     private static void shovelSnowFromBlock(PlayerInteractEvent event, BlockState currentState) {
+        event.getWorld().playSound(event.getPlayer(), event.getPos(), SoundEvents.BLOCK_SNOW_BREAK, SoundCategory.BLOCKS, 1.0f, 1.0f);
         if (!event.getWorld().isRemote) {
-            event.getWorld().playSound(event.getPlayer(), event.getPos(), SoundEvents.BLOCK_SNOW_BREAK, SoundCategory.BLOCKS, 1.0f, 1.0f);
             removeSnowFromBlock(event.getWorld(), event.getPos(), currentState, event.getItemStack());
             if (!event.getPlayer().isCreative()) {
                 event.getItemStack().damageItem(1, event.getPlayer(), playerIn -> {

@@ -1,5 +1,5 @@
 {
   "loader" : "decorative_winter:randomtranslationloader",
   "model" : "decorative_winter:block/custom/snowy_dry_grass",
-  "ambientocclusion" : false
+  "ambientocclusion" : true
 }

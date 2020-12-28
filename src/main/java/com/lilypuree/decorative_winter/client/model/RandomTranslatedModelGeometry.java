@@ -13,17 +13,19 @@ import java.util.function.Function;
 
 public class RandomTranslatedModelGeometry implements IModelGeometry<RandomTranslatedModelGeometry> {
 
+    private boolean ambientOcclusion;
     private ResourceLocation modelLoc;
 
-    public RandomTranslatedModelGeometry(ResourceLocation resourceLocation) {
+    public RandomTranslatedModelGeometry(ResourceLocation resourceLocation, boolean ambientOcclusion) {
         modelLoc = resourceLocation;
+        this.ambientOcclusion = ambientOcclusion;
     }
 
     @Override
     public IBakedModel bake(IModelConfiguration owner, ModelBakery bakery, Function<RenderMaterial, TextureAtlasSprite> spriteGetter, IModelTransform modelTransform, ItemOverrideList overrides, ResourceLocation modelLocation) {
         IUnbakedModel unbakedModel = bakery.getUnbakedModel(modelLoc);
         IBakedModel bakedModel = unbakedModel.bakeModel(bakery, spriteGetter, modelTransform, modelLocation);
-        return new RandomTranslatedModel(bakedModel);
+        return new RandomTranslatedModel(bakedModel, ambientOcclusion);
     }
 
 

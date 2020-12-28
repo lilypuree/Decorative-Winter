@@ -18,6 +18,7 @@ public class RandomTranslatedModelLoader implements IModelLoader<RandomTranslate
     @Override
     public RandomTranslatedModelGeometry read(JsonDeserializationContext deserializationContext, JsonObject modelContents) {
         ResourceLocation modelLocation = new ResourceLocation(modelContents.get("model").getAsString());
-        return new RandomTranslatedModelGeometry(modelLocation);
+        boolean ambientOcclusion = modelContents.get("ambientocclusion").getAsBoolean();
+        return new RandomTranslatedModelGeometry(modelLocation, ambientOcclusion);
     }
 }

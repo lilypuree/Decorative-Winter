@@ -12,10 +12,7 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ModelBuilder;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
+import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static com.lilypuree.decorative_winter.DecorativeWinter.MODID;
@@ -157,11 +154,21 @@ public class WinterBlockStates extends BlockStateProvider {
         return model.texture("particle", side).texture("side", side).texture("end", end);
     }
 
+    private ModelFile tintedCross(String name, ResourceLocation texture) {
+        return models().withExistingParent(name, mcLoc("block/tinted_cross")).texture("cross", texture);
+    }
+
     public void snowyFoliageBlock(Block block) {
         String name = block.getRegistryName().getPath();
+        ResourceLocation blockTexture = blockTexture(block);
+        ResourceLocation snowyBlockTexture = modLoc("block/snowy_" + name);
+        ResourceLocation blockModelWithSnow = modLoc("block/" + name + "_with_snow");
+        ResourceLocation snowyBlockModelWithSnow = modLoc("block/snowy_" + name + "_with_snow");
         getMultipartBuilder(block)
-                .part().modelFile(models().cross(name, blockTexture(block))).addModel().condition(BlockStateProperties.SNOWY, false).end()
-                .part().modelFile(models().cross("snowy_" + name, modLoc("block/snowy_" + name))).addModel().condition(BlockStateProperties.SNOWY, true).end()
+                .part().modelFile(new ModelFile.UncheckedModelFile(blockTexture)).addModel().condition(BlockStateProperties.SNOWY, false).condition(ModBlockProperties.LAYERS_0_8, 0).end()
+                .part().modelFile(new ModelFile.UncheckedModelFile(snowyBlockTexture)).addModel().condition(BlockStateProperties.SNOWY, true).condition(ModBlockProperties.LAYERS_0_8, 0).end()
+                .part().modelFile(new ModelFile.UncheckedModelFile(blockModelWithSnow)).addModel().condition(BlockStateProperties.SNOWY, false).condition(ModBlockProperties.LAYERS_0_8, 1, 2, 3, 4, 5, 6, 7, 8).end()
+                .part().modelFile(new ModelFile.UncheckedModelFile(snowyBlockModelWithSnow)).addModel().condition(BlockStateProperties.SNOWY, true).condition(ModBlockProperties.LAYERS_0_8, 1, 2, 3, 4, 5, 6, 7, 8).end()
                 .part().modelFile(new ModelFile.UncheckedModelFile(mcLoc("block/snow_height2"))).addModel().condition(ModBlockProperties.LAYERS_0_8, 1).end()
                 .part().modelFile(new ModelFile.UncheckedModelFile(mcLoc("block/snow_height4"))).addModel().condition(ModBlockProperties.LAYERS_0_8, 2).end()
                 .part().modelFile(new ModelFile.UncheckedModelFile(mcLoc("block/snow_height6"))).addModel().condition(ModBlockProperties.LAYERS_0_8, 3).end()
@@ -198,8 +205,8 @@ public class WinterBlockStates extends BlockStateProvider {
             branchBlock(wood);
         }
 
-//        snowyFoliageBlock(Registration.DRY_GRASS.get());
-//        snowyFoliageBlock(Registration.DRY_FERN.get());
+        snowyFoliageBlock(Registration.DRY_GRASS.get());
+        snowyFoliageBlock(Registration.DRY_FERN.get());
         doublePlantBlock(Registration.DRY_TALL_GRASS.get());
         doublePlantBlock(Registration.DRY_LARGE_FERN.get());
     }

@@ -1,6 +1,0 @@
-{
-  "parent": "decorative_winter:block/custom/thin_branch",
-  "textures": {
-    "texture": "decorative_winter:block/warped_thin_branch"
-  }
-}

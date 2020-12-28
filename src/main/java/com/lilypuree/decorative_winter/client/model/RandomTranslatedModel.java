@@ -22,9 +22,11 @@ import java.util.stream.Collectors;
 public class RandomTranslatedModel implements IDynamicBakedModel {
 
     private IBakedModel baseModel;
+    private boolean ambientOcclusion;
 
-    public RandomTranslatedModel(IBakedModel baseModel) {
+    public RandomTranslatedModel(IBakedModel baseModel, boolean ambientOcclusion) {
         this.baseModel = baseModel;
+        this.ambientOcclusion = ambientOcclusion;
     }
 
     @Nonnull
@@ -55,7 +57,7 @@ public class RandomTranslatedModel implements IDynamicBakedModel {
 
     @Override
     public boolean isAmbientOcclusion() {
-        return true;
+        return ambientOcclusion;
     }
 
     @Override

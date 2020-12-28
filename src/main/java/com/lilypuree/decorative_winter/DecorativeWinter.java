@@ -21,8 +21,8 @@ public class DecorativeWinter {
 
 
     public DecorativeWinter() {
-        WinterTextureStitcher.setupFolders();
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> ClientConstruction::run);
+//        WinterTextureStitcher.setupFolders();
+//        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> ClientConstruction::run);
 
         Registration.register();
 

@@ -1,8 +1,0 @@
-{
-  "parent": "decorative_blocks:custom/palisade_side",
-  "textures": {
-    "particle": "decorative_winter:block/snowy_oak_palisade_side",
-    "side": "decorative_winter:block/snowy_oak_palisade_side",
-    "end": "decorative_winter:block/snow_palisade_end"
-  }
-}
