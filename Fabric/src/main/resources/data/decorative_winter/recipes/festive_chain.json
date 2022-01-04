@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:red_dyes"
+    },
+    {
+      "tag": "c:green_dyes"
+    },
+    {
+      "item": "decorative_blocks:chain"
+    }
+  ],
+  "result": {
+    "item": "decorative_winter:festive_chain"
+  }
+}

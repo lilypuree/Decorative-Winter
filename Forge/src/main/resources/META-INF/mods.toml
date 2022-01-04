@@ -1,0 +1,43 @@
+modLoader="javafml"
+loaderVersion="[38,)"
+license="MIT"
+
+# A URL to refer people to when problems occur with this mod
+#issueTrackerURL="http://my.issue.tracker/" #optional
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]] #mandatory
+modId="decorative_winter" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Decorative Winter" #mandatory
+# A URL to query for updates for this mod. See the JSON update specification <here>
+#updateJSONURL="http://myurl.me/" #optional
+# A URL for the "homepage" for this mod, displayed in the mod UI
+#displayURL="http://example.com/" #optional
+# A file name (in the root of the mod JAR) containing a logo for display
+#logoFile="examplemod.png" #optional
+credits="Stohun, Author of Decorative Blocks" #optional
+authors="lilypuree" #optional
+description='''
+Winter themed decoration blocks, along with winter/Christmas variants of Decorative Blocks blocks
+'''
+
+[[dependencies.decorative_winter]] #optional
+modId="forge" #mandatory
+mandatory=true #mandatory
+versionRange="[38,)" #mandatory
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.decorative_winter]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.18.1,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.decorative_winter]]
+modId="decorative_blocks"
+mandatory=true
+versionRange="[2.0.0,)"
+ordering="NONE"
+side="BOTH"

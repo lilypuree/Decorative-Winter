@@ -1,0 +1,42 @@
+{
+    "schemaVersion": 1,
+    "id": "decorative_winter",
+    "version": "${version}",
+  
+    "name": "Decorative Winter",
+    "description": "Winter themed decoration blocks, along with winter/Christmas variants of Decorative Blocks blocks",
+    "authors": [
+      "lilypuree"
+    ],
+    "contact": {
+      "sources": "https://github.com/lilypuree/Decorative-Winter"
+    },
+  
+    "license": "MIT",
+  
+    "environment": "*",
+    "entrypoints": {
+      "main": [
+        "lilypuree.decorative_winter.DecorativeWinter"
+      ],
+      "client": [
+        "lilypuree.decorative_winter.DWClientSetup"
+      ]
+    },
+    "mixins": [
+      "decorative_winter.mixins.json"
+    ],
+  
+    "depends": {
+      "fabricloader": ">=0.12",
+      "fabric": "*",
+      "minecraft": "1.18.x",
+      "java": ">=17",
+      "decorative_blocks": ">=2.0.0"
+    },
+
+    "suggests": {
+      "another-mod": "*"
+    }
+  }
+  

@@ -1,8 +1,0 @@
-{
-  "parent": "decorative_winter:block/custom/snowy_seat_top",
-  "textures": {
-    "particle": "decorative_winter:block/snowy_crimson_seat",
-    "snowy": "decorative_winter:block/snowy_crimson_seat",
-    "normal": "decorative_blocks:block/crimson_seat"
-  }
-}

@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "lilypuree.decorative_winter.mixin",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "AbstractFurnaceTileEntityMixin",
+    "FireBlockInvoker"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "decorative_winter.refmap.json"
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "decorative_winter:thin_branch"
+    }
+  ],
+  "result": {
+    "item": "decorative_winter:snowy_thin_branch"
+  }
+}
