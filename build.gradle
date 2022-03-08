@@ -73,6 +73,9 @@ subprojects {
                 addGameVersion project.minecraft_version
                 addGameVersion project.name
                 mainArtifact(isForge ? jar : remapJar)
+                relations {
+                    requiredDependency 'decorative-blocks'
+                }
             }
             options {
                 debug = false
