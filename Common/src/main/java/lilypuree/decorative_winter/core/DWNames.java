@@ -1,6 +1,6 @@
 package lilypuree.decorative_winter.core;
 
-import lilypuree.decorative_blocks.datagen.types.IWoodType;
+import lilypuree.decorative_blocks.blocks.types.IWoodType;
 import lilypuree.decorative_winter.DWConstants;
 import net.minecraft.resources.ResourceLocation;
 

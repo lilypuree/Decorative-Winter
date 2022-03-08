@@ -1,8 +1,7 @@
 package lilypuree.decorative_winter.blocks;
 
 import lilypuree.decorative_blocks.blocks.PalisadeBlock;
-import lilypuree.decorative_blocks.datagen.types.IWoodType;
-import lilypuree.decorative_winter.blocks.ISnowLoggable;
+import lilypuree.decorative_blocks.blocks.types.IWoodType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -10,7 +9,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;

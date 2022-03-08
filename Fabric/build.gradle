@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.10-SNAPSHOT'
+    id 'fabric-loom'
     id 'maven-publish'
     id 'idea'
 }
@@ -22,14 +22,14 @@ dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.layered() {
         officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-${minecraft_version}:${parchment_version}")
+        parchment("org.parchmentmc.data:parchment-1.18.1:2022.03.06")
     }
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
     implementation project(":Common")
 
-    modImplementation "curse.maven:decorative-blocks-362528:3592483"
+    modImplementation "curse.maven:decorative-blocks-362528:3681918"
 
 }
 

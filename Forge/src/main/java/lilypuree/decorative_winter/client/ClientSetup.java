@@ -1,7 +1,5 @@
 package lilypuree.decorative_winter.client;
 
-import lilypuree.decorative_blocks.datagen.types.IWoodType;
-import lilypuree.decorative_blocks.datagen.types.VanillaWoodTypes;
 import lilypuree.decorative_winter.DWConstants;
 import lilypuree.decorative_winter.client.model.RandomTranslatedModelLoader;
 import lilypuree.decorative_winter.core.DWBlocks;
@@ -30,12 +28,6 @@ public class ClientSetup {
         ItemBlockRenderTypes.setRenderLayer(DWBlocks.DRY_GRASS_BLOCK, RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(DWBlocks.THIN_BRANCH, RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(DWBlocks.SNOWY_THIN_BRANCH, RenderType.cutoutMipped());
-
-
-        for (IWoodType woodType : VanillaWoodTypes.values()) {
-//            RenderTypeLookup.setRenderLayer(Registration.getSnowySeatBlock(woodType), RenderType.getCutout());
-//            RenderTypeLookup.setRenderLayer(Registration.getPalisadeBlock(woodType), RenderType.getCutout());
-        }
     }
 
     @SubscribeEvent

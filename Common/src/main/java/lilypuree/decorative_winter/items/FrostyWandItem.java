@@ -113,7 +113,7 @@ public class FrostyWandItem extends Item {
             double d3 = random.nextGaussian() * 0.02D;
             double d4 = random.nextGaussian() * 0.02D;
             double d5 = random.nextGaussian() * 0.02D;
-            world.addParticle(ParticleTypes.CLOUD, (double) pos.getX() + (double) 0.13125F + (double) 0.7375F * (double) random.nextFloat(), (double) pos.getY() + d0 + (double) random.nextFloat() * (1.0D - d0), (double) pos.getZ() + (double) 0.13125F + (double) 0.7375F * (double) random.nextFloat(), d3, d4, d5);
+            world.addParticle(ParticleTypes.CLOUD, (double) pos.getX() + d1 + d2 * (double) random.nextFloat(), (double) pos.getY() + d0 + (double) random.nextFloat() * (1.0D - d0), (double) pos.getZ() + d1 + d2 * (double) random.nextFloat(), d3, d4, d5);
         }
 
     }

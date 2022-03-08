@@ -12,6 +12,7 @@ public class WinterUtils {
     public static BlockState getSnowyPalisadeFrom(BlockState block) {
         if (block.getBlock() instanceof PalisadeBlock palisadeBlock) {
             Block snowyPalisadeBlock = DWBlocks.SNOWY_PALISADES.get(palisadeBlock.getWoodType());
+            if (snowyPalisadeBlock == null) return block;
             return snowyPalisadeBlock.defaultBlockState()
                     .setValue(BlockStateProperties.NORTH, block.getValue(BlockStateProperties.NORTH))
                     .setValue(BlockStateProperties.SOUTH, block.getValue(BlockStateProperties.SOUTH))
@@ -26,6 +27,7 @@ public class WinterUtils {
     public static BlockState getSnowySeatFrom(BlockState block) {
         if (block.getBlock() instanceof SeatBlock seatBlock) {
             Block snowySeatBlock = DWBlocks.SNOWY_SEATS.get(seatBlock.getWoodType());
+            if (snowySeatBlock == null) return block;
             return snowySeatBlock.defaultBlockState()
                     .setValue(BlockStateProperties.HORIZONTAL_FACING, block.getValue(BlockStateProperties.HORIZONTAL_FACING))
                     .setValue(BlockStateProperties.OCCUPIED, block.getValue(BlockStateProperties.OCCUPIED))

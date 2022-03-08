@@ -118,7 +118,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
 
 
-    implementation  fg.deobf("curse.maven:decorative-blocks-362528:3592481")
+    implementation  fg.deobf("curse.maven:decorative-blocks-362528:3681919")
 
 }
 

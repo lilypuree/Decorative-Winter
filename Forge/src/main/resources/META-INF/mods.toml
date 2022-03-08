@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[38,)"
+loaderVersion="[40,)"
 license="MIT"
 
 # A URL to refer people to when problems occur with this mod
@@ -24,20 +24,20 @@ Winter themed decoration blocks, along with winter/Christmas variants of Decorat
 [[dependencies.decorative_winter]] #optional
 modId="forge" #mandatory
 mandatory=true #mandatory
-versionRange="[38,)" #mandatory
+versionRange="[40,)" #mandatory
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.decorative_winter]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.18.1,)"
+versionRange="[1.18.2,)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.decorative_winter]]
 modId="decorative_blocks"
 mandatory=true
-versionRange="[2.0.0,)"
+versionRange="[2.1.0,)"
 ordering="NONE"
 side="BOTH"

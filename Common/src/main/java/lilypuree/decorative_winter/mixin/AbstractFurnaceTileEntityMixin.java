@@ -2,6 +2,7 @@ package lilypuree.decorative_winter.mixin;
 
 import lilypuree.decorative_winter.core.DWBlocks;
 import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -19,7 +20,7 @@ import java.util.Map;
 public abstract class AbstractFurnaceTileEntityMixin {
 
     @Shadow
-    protected static void add(Map<Item, Integer> map, Tag<Item> itemTag, int burnTimeIn) {
+    protected static void add(Map<Item, Integer> map, TagKey<Item> itemTag, int burnTimeIn) {
     }
 
     @Shadow

@@ -1,7 +1,7 @@
 package lilypuree.decorative_winter.blocks;
 
 import lilypuree.decorative_blocks.blocks.IWoodenBlock;
-import lilypuree.decorative_blocks.datagen.types.IWoodType;
+import lilypuree.decorative_blocks.blocks.types.IWoodType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
