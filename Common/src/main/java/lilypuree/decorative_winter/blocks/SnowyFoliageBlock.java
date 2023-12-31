@@ -3,6 +3,7 @@ package lilypuree.decorative_winter.blocks;
 import lilypuree.decorative_winter.DWCommon;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -74,8 +75,8 @@ public class SnowyFoliageBlock extends TallGrassBlock {
     }
 
     @Override
-    public void performBonemeal(ServerLevel worldIn, Random rand, BlockPos pos, BlockState state) {
-//        DoublePlantBlock doubleplantblock = (DoublePlantBlock) (this == Blocks.FERN ? Blocks.LARGE_FERN : Blocks.TALL_GRASS);
+    public void performBonemeal(ServerLevel $$0, RandomSource $$1, BlockPos $$2, BlockState $$3) {
+        //        DoublePlantBlock doubleplantblock = (DoublePlantBlock) (this == Blocks.FERN ? Blocks.LARGE_FERN : Blocks.TALL_GRASS);
 //        if (doubleplantblock.getDefaultState().isValidPosition(worldIn, pos) && worldIn.isAirBlock(pos.up())) {
 //            doubleplantblock.placeAt(worldIn, pos, 2);
 //        }
@@ -111,11 +112,6 @@ public class SnowyFoliageBlock extends TallGrassBlock {
         return super.getStateForPlacement(context).setValue(SNOWY, isSnow);
 
     }
-    @Override
-    public OffsetType getOffsetType() {
-        return OffsetType.NONE;
-    }
-
     @Override
     public boolean useShapeForLightOcclusion(BlockState state) {
         return true;

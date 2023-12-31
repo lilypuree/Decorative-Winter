@@ -1,68 +1,51 @@
 package lilypuree.decorative_winter.core;
 
-import lilypuree.decorative_blocks.core.RegistryHelper;
+import lilypuree.decorative_blocks.Constants;
 import lilypuree.decorative_blocks.fluid.ThatchFluid;
+import lilypuree.decorative_blocks.platform.Services;
+import lilypuree.decorative_blocks.registration.RegistrationProvider;
+import lilypuree.decorative_blocks.registration.RegistryObject;
 import lilypuree.decorative_winter.DWConstants;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
 
 public class Registration {
+
+    private static final RegistrationProvider<Fluid> FLUID_REGISTRY = RegistrationProvider.get(Registries.FLUID, Constants.MOD_ID);
+
     private static final ResourceLocation snowStillTexture = new ResourceLocation("block/snow");
-    private static final ResourceLocation snowFlowingTexture = new ResourceLocation(DWConstants.MODID, "block/snow_flowing");
-    public static final ThatchFluid.FluidReferenceHolder snowReferenceHolder = new ThatchFluid.FluidReferenceHolder(() -> Blocks.POWDER_SNOW, snowStillTexture, snowFlowingTexture, 0xFFFFFF);
-    public static final Material snowMaterial = (new Material.Builder(MaterialColor.SNOW)).noCollider().nonSolid().replaceable().liquid().build();
-    public static final BlockBehaviour.Properties snowProperties = BlockBehaviour.Properties.of(snowMaterial).noCollission().randomTicks().strength(100).noDrops().noOcclusion();
-    public static FlowingFluid FLOWING_SNOW;
-    public static FlowingFluid STILL_SNOW;
-    public static Block FLUID_SNOW;
+    private static final ResourceLocation snowFlowingTexture = new ResourceLocation(DWConstants.MOD_ID, "block/snow_flowing");
+    public static final ThatchFluid.FluidReferenceHolder snowReferenceHolder;
+    public static RegistryObject<FlowingFluid> FLOWING_SNOW;
+    public static RegistryObject<FlowingFluid> STILL_SNOW;
 
     static {
-        snowReferenceHolder.setFlowingFluid(() -> FLOWING_SNOW);
-        snowReferenceHolder.setStillFluid(() -> STILL_SNOW);
-        snowReferenceHolder.setFluidBlock(() -> FLUID_SNOW);
+        snowReferenceHolder = new ThatchFluid.FluidReferenceHolder(() -> Blocks.POWDER_SNOW, () -> DWBlocks.FLUID_SNOW_BLOCK.get(), () -> FLOWING_SNOW.get(), () -> STILL_SNOW.get(), snowStillTexture, snowFlowingTexture, 0xFFFFFF);
+        FLOWING_SNOW = FLUID_REGISTRY.register("flowing_snow", () -> Services.PLATFORM.createThatchFlowingFluid(snowReferenceHolder));
+        STILL_SNOW = FLUID_REGISTRY.register("fluid_snow", () -> Services.PLATFORM.createThatchStillFluid(snowReferenceHolder));
+
     }
 
-    public static void registerBlocks(RegistryHelper<Block> helper) {
-        DWBlocks.init();
-        helper.register(FLUID_SNOW, DWNames.STILL_SNOW);
-        helper.register(DWBlocks.FESTIVE_CHAIN, DWNames.FESTIVE_CHAIN);
-        helper.register(DWBlocks.WREATH, DWNames.WREATH);
-        helper.register(DWBlocks.DRY_GRASS_BLOCK, DWNames.DRY_GRASS_BLOCK);
-        helper.register(DWBlocks.DRY_GRASS, DWNames.DRY_GRASS);
-        helper.register(DWBlocks.DRY_TALL_GRASS, DWNames.DRY_TALL_GRASS);
-        helper.register(DWBlocks.DRY_FERN, DWNames.DRY_FERN);
-        helper.register(DWBlocks.DRY_LARGE_FERN, DWNames.DRY_LARGE_FERN);
-        helper.register(DWBlocks.THIN_BRANCH, DWNames.THIN_BRANCH);
-        helper.register(DWBlocks.SNOWY_THIN_BRANCH, DWNames.SNOWY_THIN_BRANCH);
-        DWBlocks.SNOWY_PALISADES.forEach((wood, block) -> helper.register(block, DWNames.snowyPalisade(wood)));
-//        DWBlocks.SNOWY_SEATS.forEach((wood, block)-> helper.register(block, DWNames.snowySeat(wood)));
+    public static void init() {
     }
 
-    public static void registerItems(RegistryHelper<Item> helper) {
-        DWItems.init();
-        helper.register(DWItems.FROSTY_WAND, DWNames.FROSTY_WAND);
-        helper.register(DWItems.FESTIVE_CHAIN, DWNames.FESTIVE_CHAIN);
-        helper.register(DWItems.WREATH, DWNames.WREATH);
-        helper.register(DWItems.DRY_GRASS_BLOCK, DWNames.DRY_GRASS_BLOCK);
-        helper.register(DWItems.DRY_GRASS, DWNames.DRY_GRASS);
-        helper.register(DWItems.DRY_TALL_GRASS, DWNames.DRY_TALL_GRASS);
-        helper.register(DWItems.DRY_FERN, DWNames.DRY_FERN);
-        helper.register(DWItems.DRY_LARGE_FERN, DWNames.DRY_LARGE_FERN);
-        helper.register(DWItems.THIN_BRANCH, DWNames.THIN_BRANCH);
-        helper.register(DWItems.SNOWY_THIN_BRANCH, DWNames.SNOWY_THIN_BRANCH);
-        DWItems.SNOWY_PALISADES.forEach((wood, item)-> helper.register(item, DWNames.snowyPalisade(wood)));
-//        DWItems.SNOWY_SEATS.forEach((wood, item)-> helper.register(item, DWNames.snowySeat(wood)));
+    public static void addToTab(CreativeModeTab.Output output) {
+        output.accept(DWItems.FESTIVE_CHAIN::get);
+        output.accept(DWItems.WREATH::get);
+        output.accept(DWItems.THIN_BRANCH::get);
+        output.accept(DWItems.SNOWY_THIN_BRANCH::get);
+        DWItems.SNOWY_PALISADES.values().forEach(regObject -> output.accept(regObject::get));
+    }
+    
+    public static FlowingFluid getFlowingSnow(){
+        return FLOWING_SNOW.get();
     }
 
-    public static void registerFluids(RegistryHelper<Fluid> helper){
-        helper.register(STILL_SNOW, DWNames.STILL_SNOW);
-        helper.register(FLOWING_SNOW, DWNames.FLOWING_SNOW);
+    public static FlowingFluid getStillSnow(){
+        return STILL_SNOW.get();
     }
 }

@@ -1,8 +1,9 @@
-package lilypuree.decorative_winter.core.setup;
+package lilypuree.decorative_winter.core;
 
 import lilypuree.decorative_blocks.blocks.PalisadeBlock;
 import lilypuree.decorative_blocks.blocks.SeatBlock;
 import lilypuree.decorative_winter.DWCommon;
+import lilypuree.decorative_winter.WinterUtils;
 import lilypuree.decorative_winter.blocks.ISnowLoggable;
 import lilypuree.decorative_winter.blocks.ModBlockProperties;
 import lilypuree.decorative_winter.blocks.SnowyFoliageBlock;
@@ -11,7 +12,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -19,8 +19,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -74,7 +72,7 @@ public class BlockActivateEventHandler {
                 if (canInsertSnow)
                     toReplace = WinterUtils.getSnowyPalisadeFrom(currentState).setValue(SNOWY, true);
             } else if (block instanceof SeatBlock && canInsertSnow) {
-                toReplace = WinterUtils.getSnowySeatFrom(currentState).setValue(SNOWY, true);
+//                toReplace = WinterUtils.getSnowySeatFrom(currentState).setValue(SNOWY, true);
             } else if (block instanceof SnowyFoliageBlock) {
                 int currentLevels = currentState.getValue(ModBlockProperties.LAYERS_0_8);
                 if (currentLevels < 8 && canInsertSnow) {

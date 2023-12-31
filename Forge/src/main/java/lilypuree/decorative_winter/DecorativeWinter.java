@@ -1,43 +1,43 @@
 package lilypuree.decorative_winter;
 
-import lilypuree.decorative_blocks.DecorativeBlocks;
-import lilypuree.decorative_blocks.fluid.ForgeThatchFluid;
-import lilypuree.decorative_blocks.fluid.ForgeThatchFluidBlock;
+import lilypuree.decorative_winter.client.ClientEventHandler;
+import lilypuree.decorative_winter.core.DWBlocks;
+import lilypuree.decorative_winter.core.DWItems;
+import lilypuree.decorative_winter.core.DWNames;
 import lilypuree.decorative_winter.core.Registration;
-import lilypuree.decorative_winter.client.ClientSetup;
-import lilypuree.decorative_winter.core.setup.ModSetup;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.RegisterEvent;
 
-@Mod(DWConstants.MODID)
+@Mod(DWConstants.MOD_ID)
 public class DecorativeWinter {
 
     public DecorativeWinter() {
+        Registration.init();
+        DWBlocks.init();
+        DWItems.init();
+        
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         modBus.addListener((FMLCommonSetupEvent e) -> {
-            ModSetup.init();
+            DWCommon.init();
         });
-        modBus.addListener(ClientSetup::initRenderLayers);
+        modBus.addListener(ClientEventHandler::initRenderLayers);
 
-        modBus.addGenericListener(Block.class, this::registerBlocks);
-        modBus.addGenericListener(Item.class, (RegistryEvent.Register<Item> event) -> Registration.registerItems(new DecorativeBlocks.RegistryHelperForge<>(event.getRegistry())));
-        modBus.addGenericListener(Fluid.class, this::registerFluids);
+        modBus.addListener(this::onRegisterEvent);
     }
 
-    public void registerBlocks(RegistryEvent.Register<Block> event) {
-        Registration.FLUID_SNOW = new ForgeThatchFluidBlock(() -> Registration.STILL_SNOW, Registration.snowProperties);
-        Registration.registerBlocks(new DecorativeBlocks.RegistryHelperForge<>(event.getRegistry()));
+    private void onRegisterEvent(RegisterEvent event) {
+        if (event.getRegistryKey() == ForgeRegistries.FLUID_TYPES.get().getRegistryKey()) {
+            registerFluidTypes(event.getForgeRegistry());
+        }
     }
-
-    public void registerFluids(RegistryEvent.Register<Fluid> event) {
-        Registration.STILL_SNOW = new ForgeThatchFluid.Source(Registration.snowReferenceHolder);
-        Registration.FLOWING_SNOW = new ForgeThatchFluid.Flowing(Registration.snowReferenceHolder);
-        Registration.registerFluids(new DecorativeBlocks.RegistryHelperForge<>(event.getRegistry()));
+    private void registerFluidTypes(IForgeRegistry<FluidType> registry) {
+        registry.register(DWNames.STILL_SNOW, Registration.getStillSnow().getFluidType());
+        registry.register(DWNames.FLOWING_SNOW, Registration.getFlowingSnow().getFluidType());
     }
 }

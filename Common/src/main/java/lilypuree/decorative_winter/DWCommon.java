@@ -1,6 +1,10 @@
 package lilypuree.decorative_winter;
 
+import lilypuree.decorative_blocks.CommonAPI;
 import lilypuree.decorative_winter.blocks.ModBlockProperties;
+import lilypuree.decorative_winter.core.DWBlocks;
+import lilypuree.decorative_winter.core.Registration;
+import lilypuree.decorative_winter.mixin.FireBlockInvoker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -10,11 +14,24 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.SNOWY;
 
 public class DWCommon {
+
+    public static void init() {
+        CommonAPI.addThatchlikeFluid(Registration.snowReferenceHolder);
+        
+        FireBlockInvoker invoker = ((FireBlockInvoker) ((Object) Blocks.FIRE));
+        invoker.invokeSetFlammable(DWBlocks.WREATH.get(), 5, 20);
+//        invoker.invokeSetFlammable(DWBlocks.DRY_GRASS, 60, 80);
+//        invoker.invokeSetFlammable(DWBlocks.DRY_TALL_GRASS, 60, 80);
+//        invoker.invokeSetFlammable(DWBlocks.DRY_GRASS_BLOCK, 60, 80);
+//        invoker.invokeSetFlammable(DWBlocks.DRY_FERN, 60, 80);
+//        invoker.invokeSetFlammable(DWBlocks.DRY_LARGE_FERN, 60, 80);
+    }
 
     public static void removeSnowFromBlock(Level world, BlockPos pos, BlockState block, ItemStack heldItem) {
         if (block.hasProperty(ModBlockProperties.LAYERS_0_8)) {

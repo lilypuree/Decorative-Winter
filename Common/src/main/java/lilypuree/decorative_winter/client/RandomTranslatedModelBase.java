@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec2;
 
@@ -16,7 +17,7 @@ public interface RandomTranslatedModelBase {
 
     BakedModel getBaseModel();
 
-    default List<BakedQuad> getQuadsDefault(BlockState state, Direction side, Random rand) {
+    default List<BakedQuad> getQuadsDefault(BlockState state, Direction side, RandomSource rand) {
         long i = Mth.getSeed(rand.nextInt(), 0, rand.nextInt());
         Vec2 offset = new Vec2(((i & 15L) / 15.0F - 0.5F) * 0.5F, (((i >> 8 & 15L) / 15.0F) - 0.5F) * 0.5F);
         return getBaseModel().getQuads(state, side, rand).stream().map(quad -> getOffsetQuad(quad, offset)).collect(Collectors.toList());

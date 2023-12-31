@@ -1,6 +1,6 @@
 package lilypuree.decorative_winter;
 
-import lilypuree.decorative_winter.core.setup.BlockActivateEventHandler;
+import lilypuree.decorative_winter.core.BlockActivateEventHandler;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 
 public class Callbacks {

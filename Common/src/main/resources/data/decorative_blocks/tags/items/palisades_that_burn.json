@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "decorative_winter:snowy_spruce_palisade",
+    "decorative_winter:snowy_acacia_palisade",
+    "decorative_winter:snowy_dark_oak_palisade",
+    "decorative_winter:snowy_birch_palisade",
+    "decorative_winter:snowy_jungle_palisade",
+    "decorative_winter:snowy_oak_palisade"
+  ]
+}

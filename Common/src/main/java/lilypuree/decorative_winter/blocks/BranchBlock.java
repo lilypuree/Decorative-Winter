@@ -19,10 +19,9 @@ public class BranchBlock extends Block {
     }
 
     @Override
-    public OffsetType getOffsetType() {
-        return OffsetType.NONE;
+    public float getMaxHorizontalOffset() {
+        return super.getMaxHorizontalOffset();
     }
-
     @Override
     public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
         return true;

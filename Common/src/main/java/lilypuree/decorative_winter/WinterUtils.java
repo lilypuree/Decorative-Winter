@@ -1,4 +1,4 @@
-package lilypuree.decorative_winter.core.setup;
+package lilypuree.decorative_winter;
 
 import lilypuree.decorative_blocks.blocks.PalisadeBlock;
 import lilypuree.decorative_blocks.blocks.SeatBlock;
@@ -11,7 +11,7 @@ public class WinterUtils {
 
     public static BlockState getSnowyPalisadeFrom(BlockState block) {
         if (block.getBlock() instanceof PalisadeBlock palisadeBlock) {
-            Block snowyPalisadeBlock = DWBlocks.SNOWY_PALISADES.get(palisadeBlock.getWoodType());
+            Block snowyPalisadeBlock = DWBlocks.SNOWY_PALISADES.get(palisadeBlock.getWoodType()).get();
             if (snowyPalisadeBlock == null) return block;
             return snowyPalisadeBlock.defaultBlockState()
                     .setValue(BlockStateProperties.NORTH, block.getValue(BlockStateProperties.NORTH))
@@ -26,7 +26,7 @@ public class WinterUtils {
 
     public static BlockState getSnowySeatFrom(BlockState block) {
         if (block.getBlock() instanceof SeatBlock seatBlock) {
-            Block snowySeatBlock = DWBlocks.SNOWY_SEATS.get(seatBlock.getWoodType());
+            Block snowySeatBlock = DWBlocks.SNOWY_SEATS.get(seatBlock.getWoodType()).get();
             if (snowySeatBlock == null) return block;
             return snowySeatBlock.defaultBlockState()
                     .setValue(BlockStateProperties.HORIZONTAL_FACING, block.getValue(BlockStateProperties.HORIZONTAL_FACING))

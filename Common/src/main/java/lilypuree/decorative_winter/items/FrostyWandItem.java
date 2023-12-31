@@ -4,13 +4,13 @@ import lilypuree.decorative_blocks.blocks.PalisadeBlock;
 import lilypuree.decorative_blocks.blocks.SeatBlock;
 import lilypuree.decorative_winter.blocks.ISnowLoggable;
 import lilypuree.decorative_winter.blocks.SnowyGrassBlock;
-import lilypuree.decorative_winter.core.DWBlocks;
-import lilypuree.decorative_winter.core.setup.WinterUtils;
+import lilypuree.decorative_winter.WinterUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -25,7 +25,6 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.SNOWY;
 
@@ -36,11 +35,11 @@ public class FrostyWandItem extends Item {
 
     public FrostyWandItem(Properties properties) {
         super(properties);
-        dryableBlocks.put(Blocks.GRASS, DWBlocks.DRY_GRASS);
-        dryableBlocks.put(Blocks.TALL_GRASS, DWBlocks.DRY_TALL_GRASS);
-        dryableBlocks.put(Blocks.GRASS_BLOCK, DWBlocks.DRY_GRASS_BLOCK);
-        dryableBlocks.put(Blocks.FERN, DWBlocks.DRY_FERN);
-        dryableBlocks.put(Blocks.LARGE_FERN, DWBlocks.DRY_LARGE_FERN);
+//        dryableBlocks.put(Blocks.GRASS, DWBlocks.DRY_GRASS);
+//        dryableBlocks.put(Blocks.TALL_GRASS, DWBlocks.DRY_TALL_GRASS);
+//        dryableBlocks.put(Blocks.GRASS_BLOCK, DWBlocks.DRY_GRASS_BLOCK);
+//        dryableBlocks.put(Blocks.FERN, DWBlocks.DRY_FERN);
+//        dryableBlocks.put(Blocks.LARGE_FERN, DWBlocks.DRY_LARGE_FERN);
     }
 
     @Override
@@ -108,7 +107,7 @@ public class FrostyWandItem extends Item {
         double d0 = blockstate.getShape(world, pos).max(Direction.Axis.Y, 0.5D, 0.5D) + 0.03125D;
         double d1 = (double) 0.13125F;
         double d2 = (double) 0.7375F;
-        Random random = world.getRandom();
+        RandomSource random = world.getRandom();
         for (int i = 0; i < 10; ++i) {
             double d3 = random.nextGaussian() * 0.02D;
             double d4 = random.nextGaussian() * 0.02D;

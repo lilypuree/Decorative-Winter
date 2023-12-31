@@ -1,6 +1,7 @@
 package lilypuree.decorative_winter.core;
 
 import lilypuree.decorative_blocks.blocks.types.IWoodType;
+import lilypuree.decorative_blocks.blocks.types.WoodDecorativeBlockTypes;
 import lilypuree.decorative_winter.DWConstants;
 import net.minecraft.resources.ResourceLocation;
 
@@ -21,7 +22,7 @@ public class DWNames {
 
 
     protected static ResourceLocation create(String name) {
-        return new ResourceLocation(DWConstants.MODID, name);
+        return new ResourceLocation(DWConstants.MOD_ID, name);
     }
 
     public static ResourceLocation snowyPalisade(IWoodType woodType) {
@@ -30,4 +31,5 @@ public class DWNames {
     public static ResourceLocation snowySeat(IWoodType woodType) {
         return create("snowy_" + woodType + "_seat");
     }
+
 }
