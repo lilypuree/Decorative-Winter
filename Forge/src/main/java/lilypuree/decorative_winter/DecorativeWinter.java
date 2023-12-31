@@ -5,6 +5,7 @@ import lilypuree.decorative_winter.core.DWBlocks;
 import lilypuree.decorative_winter.core.DWItems;
 import lilypuree.decorative_winter.core.DWNames;
 import lilypuree.decorative_winter.core.Registration;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fml.common.Mod;
@@ -21,7 +22,7 @@ public class DecorativeWinter {
         Registration.init();
         DWBlocks.init();
         DWItems.init();
-        
+
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         modBus.addListener((FMLCommonSetupEvent e) -> {
             DWCommon.init();
@@ -29,6 +30,7 @@ public class DecorativeWinter {
         modBus.addListener(ClientEventHandler::initRenderLayers);
 
         modBus.addListener(this::onRegisterEvent);
+        modBus.addListener(this::onCreativeTab);
     }
 
     private void onRegisterEvent(RegisterEvent event) {
@@ -36,8 +38,15 @@ public class DecorativeWinter {
             registerFluidTypes(event.getForgeRegistry());
         }
     }
+
     private void registerFluidTypes(IForgeRegistry<FluidType> registry) {
         registry.register(DWNames.STILL_SNOW, Registration.getStillSnow().getFluidType());
         registry.register(DWNames.FLOWING_SNOW, Registration.getFlowingSnow().getFluidType());
+    }
+
+    private void onCreativeTab(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTab() == lilypuree.decorative_blocks.core.Registration.ITEM_GROUP.get()) {
+            Registration.addToTab(event);
+        }
     }
 }

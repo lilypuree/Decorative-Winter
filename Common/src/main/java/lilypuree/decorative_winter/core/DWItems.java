@@ -37,11 +37,11 @@ public class DWItems {
     public static void init() {
         FESTIVE_CHAIN = registerBlockItem(DWBlocks.FESTIVE_CHAIN);
         WREATH = registerBlockItem(DWBlocks.WREATH);
-//        DRY_GRASS_BLOCK = blockItem(DWBlocks.DRY_GRASS_BLOCK);
-//        DRY_GRASS = blockItem(DWBlocks.DRY_GRASS);
-//        DRY_TALL_GRASS = blockItem(DWBlocks.DRY_TALL_GRASS);
-//        DRY_FERN = blockItem(DWBlocks.DRY_FERN);
-//        DRY_LARGE_FERN = blockItem(DWBlocks.DRY_LARGE_FERN);
+        DRY_GRASS_BLOCK = registerBlockItem(DWBlocks.DRY_GRASS_BLOCK);
+        DRY_GRASS = registerBlockItem(DWBlocks.DRY_GRASS);
+        DRY_TALL_GRASS = registerBlockItem(DWBlocks.DRY_TALL_GRASS);
+        DRY_FERN = registerBlockItem(DWBlocks.DRY_FERN);
+        DRY_LARGE_FERN = registerBlockItem(DWBlocks.DRY_LARGE_FERN);
         THIN_BRANCH = registerBlockItem(DWBlocks.THIN_BRANCH);
         SNOWY_THIN_BRANCH = registerBlockItem(DWBlocks.SNOWY_THIN_BRANCH);
         FROSTY_WAND = registerItem("frosty_wand", () -> new FrostyWandItem(new Item.Properties().stacksTo(1)));

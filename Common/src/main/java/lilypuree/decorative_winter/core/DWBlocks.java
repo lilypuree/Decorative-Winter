@@ -43,15 +43,15 @@ public class DWBlocks {
 
         FESTIVE_CHAIN = registerBlock("festive_chain", () -> new ChainBlock(chainProperties));
         WREATH = registerBlock("wreath", () -> new LatticeBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
-//        DRY_GRASS_BLOCK = registerBlock("dry_grass_block", () -> new SnowyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK).mapColor(MapColor.COLOR_LIGHT_GRAY)));
-//        DRY_GRASS = new SnowyFoliageBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).mapColor(MapColor.COLOR_LIGHT_GRAY).noOcclusion());
-//        DRY_TALL_GRASS = new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).mapColor(MapColor.COLOR_LIGHT_GRAY));
-//        DRY_FERN = new SnowyFoliageBlock(BlockBehaviour.Properties.copy(Blocks.FERN).mapColor(MapColor.COLOR_LIGHT_GRAY));
-//        DRY_LARGE_FERN = new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.LARGE_FERN).mapColor(MapColor.COLOR_LIGHT_GRAY));
+        DRY_GRASS_BLOCK = registerBlock("dry_grass_block", () -> new SnowyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+        DRY_GRASS = registerBlock("dry_grass", () -> new SnowyFoliageBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).mapColor(MapColor.COLOR_LIGHT_GRAY).noOcclusion().dynamicShape()));
+        DRY_TALL_GRASS = registerBlock("dry_tall_grass", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+        DRY_FERN = registerBlock("dry_fern", () -> new SnowyFoliageBlock(BlockBehaviour.Properties.copy(Blocks.FERN).mapColor(MapColor.COLOR_LIGHT_GRAY).dynamicShape()));
+        DRY_LARGE_FERN = registerBlock("dry_large_fern", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.LARGE_FERN).mapColor(MapColor.COLOR_LIGHT_GRAY)));
         THIN_BRANCH = registerBlock("thin_branch", () -> new BranchBlock(branchProperty));
         SNOWY_THIN_BRANCH = registerBlock("snowy_thin_branch", () -> new BranchBlock(branchProperty));
-        FLUID_SNOW_BLOCK = registerBlock("fluid_snow", ()-> Services.PLATFORM.createThatchFluidBlock(Registration.STILL_SNOW, liquidsnowProperty));
-        
+        FLUID_SNOW_BLOCK = registerBlock("fluid_snow", () -> Services.PLATFORM.createThatchFluidBlock(Registration.STILL_SNOW, liquidsnowProperty));
+
         for (IWoodType woodTypes : VanillaWoodTypes.values()) {
             SNOWY_PALISADES.put(woodTypes, registerBlock(DWNames.snowyPalisade(woodTypes).getPath(), () -> getSnowyPalisade(woodTypes)));
         }

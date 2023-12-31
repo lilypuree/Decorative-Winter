@@ -6,11 +6,11 @@ plugins {
 
 subprojects {
     apply plugin: 'java'
-    
+
     java.toolchain.languageVersion = JavaLanguageVersion.of(17)
     java.withSourcesJar()
     java.withJavadocJar()
-        
+
     jar {
         from(rootProject.file("LICENSE")) {
             rename { "${it}_${mod_name}" }
@@ -24,7 +24,7 @@ subprojects {
                     'Implementation-Version'  : project.jar.archiveVersion,
                     'Implementation-Vendor'   : mod_author,
                     'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                    'Timestamp'              : System.currentTimeMillis(),
+                    'Timestamp'               : System.currentTimeMillis(),
                     'Built-On-Java'           : "${System.getProperty('java.vm.version')} (${System.getProperty('java.vm.vendor')})",
                     'Build-On-Minecraft'      : minecraft_version
             ])
@@ -62,20 +62,22 @@ subprojects {
 
     processResources {
         def expandProps = [
-                "version"                   : version,
-                "group"                     : project.group, //Else we target the task's group.
-                "minecraft_version"         : minecraft_version,
-                "forge_version"             : forge_version,
-                "forge_loader_version_range": forge_loader_version_range,
-                "forge_version_range"       : forge_version_range,
-                "minecraft_version_range"   : minecraft_version_range,
-                "fabric_version"            : fabric_version,
-                "fabric_loader_version"     : fabric_loader_version,
-                "mod_name"                  : mod_name,
-                "mod_author"                : mod_author,
-                "mod_id"                    : mod_id,
-                "mod_license"               : mod_license,
-                "mod_description"           : project.mod_description,
+                "version"                        : version,
+                "group"                          : project.group, //Else we target the task's group.
+                "minecraft_version"              : minecraft_version,
+                "minecraft_version_range"        : minecraft_version_range,
+                "forge_version"                  : forge_version,
+                "forge_loader_version_range"     : forge_loader_version_range,
+                "forge_version_range"            : forge_version_range,
+                "decorative_blocks_version"      : decorative_blocks_version,
+                "decorative_blocks_version_range": decorative_blocks_version_range,
+                "fabric_version"                 : fabric_version,
+                "fabric_loader_version"          : fabric_loader_version,
+                "mod_name"                       : mod_name,
+                "mod_author"                     : mod_author,
+                "mod_id"                         : mod_id,
+                "mod_license"                    : mod_license,
+                "mod_description"                : project.mod_description,
         ]
 
         filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', '*.mixins.json']) {
@@ -83,7 +85,7 @@ subprojects {
         }
         inputs.properties(expandProps)
     }
-    
+
     // Disables Gradle's custom module metadata from being published to maven. The
     // metadata includes mapped dependencies which are not reasonably consumable by
     // other mod developers.

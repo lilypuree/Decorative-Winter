@@ -83,6 +83,13 @@ minecraft {
 
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
+repositories {
+    maven {
+        url "https://cursemaven.com"
+    }
+}
+
+
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly project(":Common")
@@ -94,8 +101,8 @@ dependencies {
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     
-//    implementation  fg.deobf("curse.maven:decorative-blocks-362528:4997491")
-    implementation fg.deobf("lilypuree:decorative_blocks-forge-${minecraft_version}:${decorative_blocks_version}")
+    implementation fg.deobf("curse.maven:decorative-blocks-362528:4997491")
+//    implementation fg.deobf("lilypuree:decorative_blocks-forge-${minecraft_version}:${decorative_blocks_version}")
 }
 
 tasks.withType(JavaCompile).configureEach {

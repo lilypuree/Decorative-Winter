@@ -19,5 +19,5 @@
   "block.decorative_winter.wreath": "Wreath",
   "item.decorative_winter.frosty_wand": "Frosty Wand",
   "block.decorative_winter.fluid_snow": "Fluid Snow",
-  "fluid.decorative_winter.fluid_snow": "Fluid Snow"
+  "fluid_type.decorative_winter.fluid_snow": "Fluid Snow"
 }
